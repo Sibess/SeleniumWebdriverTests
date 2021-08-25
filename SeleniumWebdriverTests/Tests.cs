@@ -76,7 +76,6 @@ namespace SeleniumWebdriverTests
 
         [OneTimeTearDown]
         public static void CloseBrowser()
-
         {
             Driver.Quit();
         }
