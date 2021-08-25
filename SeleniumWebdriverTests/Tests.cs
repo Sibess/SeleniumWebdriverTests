@@ -19,7 +19,7 @@ namespace SeleniumWebdriverTests
         }
 
         [Test]
-        public void ShoudShowValidAlertText()
+        public void ShowValidAlertText()
         {
             Driver.Navigate().GoToUrl("http://webdriveruniversity.com/Login-Portal/fail.html");
             Driver.FindElement(By.Id("text")).SendKeys("Admin");
@@ -31,7 +31,7 @@ namespace SeleniumWebdriverTests
         }
 
         [Test]
-        public void ShoudShowValidTextInExpandedAccordion()
+        public void ShowValidTextInExpandedAccordion()
         {
           Driver.Navigate().GoToUrl("http://webdriveruniversity.com/Accordion/index.html");
           var labelElement = Driver.FindElement(By.Id("hidden-text"));
@@ -43,7 +43,7 @@ namespace SeleniumWebdriverTests
         }
 
         [Test]
-        public void ShoudShowValidTextIngfhfExpandedAccordion()
+        public void SelectValidOptionsInDropdownAndCheckboxes()
         {
             Driver.Navigate().GoToUrl("http://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html");
             Driver.FindElement(By.Id("dropdowm-menu-1")).Click();
@@ -59,6 +59,19 @@ namespace SeleniumWebdriverTests
             Driver.FindElement(By.Id("fruit-selects")).Click();
             Assert.IsFalse(Driver.FindElement(By.XPath("//*[@id='fruit-selects']/option[2]")).Enabled, "Orange option is enabled.");
             Driver.FindElement(By.XPath("//*[@id='fruit-selects']/option[1]")).Click();
+        }
+
+        [Test]
+        public void ShowValidPopupText()
+        {
+            Driver.Navigate().GoToUrl("http://webdriveruniversity.com/Ajax-Loader/index.html");
+            var greenButton = Driver.FindElement(By.XPath("//span[@id='button1']/p"));
+            Wait.Until(ExpectedConditions.TextToBePresentInElement(greenButton, "CLICK ME!"));
+            greenButton.Click();
+            Wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("close")));
+            string closePopupText = Driver.FindElement(By.XPath("//div[@id='myModalClick']/div/div/div/h4")).Text;
+            Assert.IsTrue(closePopupText.Contains("Well Done For Waiting....!!!"));
+            Driver.FindElement(By.XPath("//*[@id='myModalClick']/div/div/div[3]/button")).Click();
         }
 
         [OneTimeTearDown]
