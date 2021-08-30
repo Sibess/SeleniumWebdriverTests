@@ -145,6 +145,7 @@ namespace SeleniumWebdriverTests
             Driver.SwitchTo().Frame("frame");
             Assert.IsTrue(Driver.FindElement(By.XPath("//div[@class='col-sm-8 col-lg-8 col-md-8'][1]/div/div[2]/p")).Text.Contains("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elit sapien, tempus sit amet hendrerit volutpat, euismod vitae risus. Etiam consequat, sem et vulputate dapibus, diam enim tristique est, vitae porta eros mauris ut orci. Praesent sed velit odio. Ut massa arcu, suscipit viverra molestie at, aliquet a metus. Nullam sit amet tellus dui, ut tincidunt justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit."));
             //clicking on the “WebdriverUniversity.com (IFrame)” button
+            Driver.SwitchTo().DefaultContent();
             Driver.FindElement(By.Id("nav-title")).Click();
         }
 
